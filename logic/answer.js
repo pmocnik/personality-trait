@@ -1,9 +1,10 @@
-const { setUserAnswer } = require("../db/db");
-const { recalculate } = require("./calc");
+import { setUserAnswer } from "../db/userAnswer.js";
+import { recalculate } from "./calc.js";
 
 const submitAsnwer = async (takeId, questionId, answerId) => {
+    if (answerId == null) return;
     await setUserAnswer(takeId, questionId, answerId);
     await recalculate(takeId);
 }
 
-module.exports = submitAsnwer;
+export default submitAsnwer;

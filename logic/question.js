@@ -1,11 +1,12 @@
-const { getQuestions, getAnswers } = require('../db/db');
+import { getAnswers } from '../db/answer.js';
+import { getQuestions } from '../db/question.js';
 
 const getAllQuestions = async () => {
 
     let questionsDb = await getQuestions();
-
     for (let questionDb of questionsDb) {
         let answersDb = await getAnswers(questionDb.id);
+
         questionDb.question = questionDb.value;
         questionDb.value = undefined;
         questionDb.answers = [];
@@ -17,4 +18,4 @@ const getAllQuestions = async () => {
     return questionsDb;
 }
 
-module.exports = getAllQuestions;
+export default getAllQuestions;

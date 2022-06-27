@@ -1,8 +1,11 @@
-const express = require('express');
-const { getUserAnswers, getCalc } = require('./db/db');
-const submitAsnwer = require('./logic/answer');
-const { startUserCalc, getCalculation } = require('./logic/calc');
-const getAllQuestions = require('./logic/question');
+import express from 'express';
+import { getUserAnswers } from './db/userAnswer.js';
+import { getCalc } from './db/userCalc.js';
+
+import submitAsnwer from './logic/answer.js';
+import { startUserCalc, getCalculation } from './logic/calc.js';
+import getAllQuestions from './logic/question.js';
+
 const app = express()
 
 app.use(express.static('public', {}),)
@@ -37,4 +40,4 @@ app.get("/getCalculation", async (req, res) => {
     res.status(200).send(JSON.stringify(await getCalculation(req.query.takeId)));
 })
 
-app.listen(3000)
+app.listen(3000);

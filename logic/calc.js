@@ -1,4 +1,7 @@
-const { setUserCalc, countQuestions, getAnswer, getUserCalcQuestionCount, getUserAnswers, getCalc, getCalcByTakeId } = require("../db/db");
+import { getAnswer } from "../db/answer.js";
+import { countQuestions } from "../db/question.js";
+import { getUserAnswers } from "../db/userAnswer.js";
+import { getCalcByTakeId, getUserCalcQuestionCount, setUserCalc } from "../db/userCalc.js";
 
 const startUserCalc = async (takeId) => {
     let questionCount = await countQuestions();
@@ -28,4 +31,4 @@ const getCalculation = async (takeId) => {
     return;
 }
 
-module.exports = { startUserCalc, recalculate, getCalculation };
+export { startUserCalc, recalculate, getCalculation };
