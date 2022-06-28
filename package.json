@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.babel.js",
+    "build": "webpack --config webpack.prod.cjs",
     "dev-all": "run-p dev start",
-    "dev": "webpack serve --open --config webpack.dev.babel.js",
+    "dev": "webpack serve --open --config webpack.dev.cjs",
     "start": "node app.js"
   },
   "author": "",
@@ -18,7 +18,6 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "babel-register": "^6.26.0",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "npm-run-all": "^4.1.5",
