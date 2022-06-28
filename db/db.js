@@ -5,6 +5,8 @@ import { setQuestion } from './question.js';
 
 const db = connect();
 
+prepare();
+
 async function prepare() {
   await db;
   await db.query(sql`
@@ -60,42 +62,18 @@ async function populate() {
   await setAnswer(10, "Think that they are obviously right", 3, 1);
   await setAnswer(11, "Defend your own point of view, tooth and nail", 3, 0);
   await setAnswer(12, "Continuously interrupt your colleague", 3, 1);
+
+  await setQuestion(4, "You are taking part in a guided tour of a museum. You:");
+  await setAnswer(13, "Are a bit too far towards the back so don’t really hear what the guide is saying", 4, 0);
+  await setAnswer(14, "Follow the group without question", 4, 1);
+  await setAnswer(15, "Make sure that everyone is able to hear properly", 4, 0);
+  await setAnswer(16, "Are right up the front, adding your own comments in a loud voice", 4, 1);
+
+  await setQuestion(5, "During dinner parties at your home, you have a hard time with people who:");
+  await setAnswer(17, "Ask you to tell a story in front of everyone else", 5, 0);
+  await setAnswer(18, "Talk privately between themselves", 5, 1);
+  await setAnswer(19, "Hang around you all evening", 5, 0);
+  await setAnswer(20, "Always drag the conversation back to themselves", 5, 1);
 }
 
-const prepared = prepare();
-
-
-// async function setUserCalc(takeId, questionCount, calc) {
-//   await prepared;
-//   await db.query(sql`
-//     INSERT INTO user_calc (takeId, questionCount, calc)
-//       VALUES (${takeId},${questionCount},${calc})
-//     ON CONFLICT (takeId) DO UPDATE
-//       SET calc=excluded.calc;`);
-// }
-
-// async function getUserCalcQuestionCount(takeId) {
-//   await prepared;
-//   const results = await db.query(sql`
-//     SELECT questionCount FROM user_calc WHERE takeId=${takeId}`);
-//   if (results.length == 1) return results[0].questionCount;
-//   return;
-// }
-
-// async function getCalc() {
-//   await prepared;
-//   const results = await db.query(sql`
-//     SELECT * FROM user_calc`);
-//   return results;
-// }
-
-// async function getCalcByTakeId(takeId) {
-//   await prepared;
-//   const results = await db.query(sql`
-//     SELECT calc FROM user_calc WHERE takeId=${takeId}`);
-//   if (results.length == 1) return results[0].calc;
-//   return;
-// }
-
-// export { db, setUserCalc, getUserCalcQuestionCount, getCalc, getCalcByTakeId }
 export { db }
