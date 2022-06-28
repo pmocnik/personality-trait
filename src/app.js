@@ -1,4 +1,5 @@
-import './style.scss'
+import './style.scss';
+import { v4 as uuidv4 } from 'uuid';
 
 //Selectors
 const startButton = document.querySelector(".start-button");
@@ -33,7 +34,7 @@ footer.innerText = new Date().getFullYear();
 
 //Functions
 async function startExam(event) {
-    currentTakeUUID = await createUUID();
+    currentTakeUUID = await uuidv4();
     await loadData();
     currentQuestion = 1;
     buildQuestion();
@@ -152,12 +153,4 @@ async function finish() {
 
     resultPage.innerHTML = "<div>You are: " + await response.json() + "</div>";
     return;
-}
-
-
-function createUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
 }
