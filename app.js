@@ -8,7 +8,7 @@ import getAllQuestions from './logic/question.js';
 
 const app = express()
 
-app.use(express.static('public', {}),)
+app.use('/', express.static('public', {}),)
 
 app.use(express.json());
 
@@ -28,7 +28,7 @@ app.put("/save", async (req, res) => {
     res.status(200).send();
 })
 
-app.get("/userAndswers", async (req, res) => {
+app.get("/userAnswers", async (req, res) => {
     res.status(200).send(JSON.stringify(await getUserAnswers(req.query.takeId)));
 })
 
